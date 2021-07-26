@@ -35,7 +35,7 @@ namespace Yggdrasil.Patches {
                         File.ReadAllBytes(x.ReplacementFilePath).Length - (bankData.DataIndexElements.FirstOrDefault((y) => x.SfxId == y.FileId)?.DataSize ?? 0)
                     )
                 );
-                YggdrasilLogger.Error($"Increasing by {bankSizeInc}");
+                YggdrasilLogger.Debug($"Changing '{bankName}' size by {bankSizeInc}");
                 long newBankSize = oldBankSize + bankSizeInc;
                 IntPtr newBankBaseAddr = Marshal.AllocHGlobal((int)newBankSize);
                 long writerAddr = newBankBaseAddr.ToInt64();
